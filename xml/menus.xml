@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <menuitem id="demo_module.menu_base_partner" name="DEMO"/>
-            <menuitem id="menu_1" name="Menu nivel 2" parent="demo_module.menu_base_partner"/>
+        <menuitem id="menu_base_partner" name="DEMO"/>
+            <menuitem id="menu_1" name="Menu nivel 2" parent="menu_base_partner"/>
                 <menuitem id="menu_open_model" name="models" parent="menu_1" action="action_open_model"/>
     </data>
 </openerp>
