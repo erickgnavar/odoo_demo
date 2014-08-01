@@ -19,11 +19,43 @@
             <field name="model">mydemo.mymodel</field>
             <field name="arch" type="xml">
                 <form string="My Model" version="7.0">
+                    <header>
+                        <button name="action_sent" states="draft" string="Enviar" type="object"/>
+                        <button name="action_approved" states="sent" string="Aprobar" type="object"/>
+                        <button name="action_rejected" states="sent" string="Rechazar" type="object"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
                     <sheet string="My model">
                         <group>
                             <field name="name"/>
-                            <field name="quantity"/>
+                            <field name="type"/>
+                            <field name="quantity" attrs="{'invisible': [('type', '=', 'single')]}"/>
+                            <field name="service_ids" widget="many2many_tags"/>
+                            <field name="supplier_id"/>
+                            <field name="department_id" on_change="on_change_department_id(department_id)"/>
+                            <field name="employee_id"/>
                         </group>
+                        <notebook>
+                            <page string="Detalles">
+                                <field name="detail_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_id" on_change="on_change_product_id(product_id)"/>
+                                        <field name="name"/>
+                                        <field name="number"/>
+                                        <field name="quantity" on_change="on_change_quantity_or_price(quantity, price)"/>
+                                        <field name="price" on_change="on_change_quantity_or_price(quantity, price)"/>
+                                        <field name="total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Empleados">
+                                <field name="employee_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
