@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--trees-->
+        <record id="tree_mymodel" model="ir.ui.view">
+            <field name="name">Models</field>
+            <field name="model">mydemo.mymodel</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Models">
+                    <field name="name"/>
+                    <field name="quantity"/>
+                </tree>
+            </field>
+        </record>
+        <!--forms-->
+        <record id="form_mymodel" model="ir.ui.view">
+            <field name="name">mymodel</field>
+            <field name="model">mydemo.mymodel</field>
+            <field name="arch" type="xml">
+                <form string="My Model" version="7.0">
+                    <sheet string="My model">
+                        <group>
+                            <field name="name"/>
+                            <field name="quantity"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>
